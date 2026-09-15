@@ -1,0 +1,92 @@
+<!-- Task 2 : Take a number,shapeName & color as input from user and on a click of generate btn generate those number of shapes  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        .circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .square {
+            width: 70px;
+            height: 70px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .rectangle {
+            width: 80px;
+            height: 50px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .outputContainer {
+            width: 100%;
+            height: 500px;
+            background-color: beige;
+            margin: 10px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-12">
+                <h2>Task 2 : Take a number,shapeName & color as input from user and on a click of generate btn generate
+                    those number of shapes</h2>
+            </div>
+            <div class="col-4">
+                <select id="shapeName" class="form-control">
+                    <option value="circle">Circle</option>
+                    <option value="square">Square</option>
+                    <option value="rectangle">Rectangle</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <input type="text" id="noOfShape" class="form-control" placeholder="Please enter count">
+            </div>
+            <div class="col-2 d-flex justify-content-center">
+                <input type="color" id="shapeColor" class="form-control form-control-color"
+                    placeholder="Please enter color">
+            </div>
+            <div class="col-2 text-end">
+                <button type="button" class="btn btn-primary" id="btnGenerate">Generate Shape</button>
+            </div>
+            <div class="outputContainer" id="outputWindow">
+
+            </div>
+        </div>
+    </div>
+    <script>
+
+        document.querySelector("#btnGenerate").addEventListener("click", () => {
+            var shapeName = document.querySelector("#shapeName").value;
+            var count = document.querySelector("#noOfShape").value;
+            var shapeColor = document.querySelector("#shapeColor").value;
+            document.querySelector("#outputWindow").innerHTML = "";
+            for (let index = 0; index < count; index++) {
+                var shape = document.createElement("div");
+                shape.classList.add(shapeName);
+                shape.style.backgroundColor = shapeColor
+                document.querySelector("#outputWindow").appendChild(shape);
+            }
+        })
+    </script>
+</body>
+
+</html>
