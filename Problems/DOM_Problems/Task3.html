@@ -1,4 +1,4 @@
-<!-- Task 2 : Take a number,shapeName & color as input from user and on a click of generate btn generate those number of shapes  -->
+<!-- Task 3 : Take a number,shapeName as input from user and on a click of generate btn generate those number of shapes but their color has to be choosen randomly -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task 2</title>
+    <title>Task 3</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <style>
@@ -26,8 +26,8 @@
         }
 
         .rectangle {
-            width: 80px;
-            height: 50px;
+            width: 150px;
+            height: 80px;
             margin: 5px;
             display: inline-block;
         }
@@ -47,22 +47,18 @@
     <div class="container my-3">
         <div class="row">
             <div class="col-12">
-                <h2>Task 2 : Take a number,shapeName & color as input from user and on a click of generate btn generate
-                    those number of shapes</h2>
+                <h2>Task 3 : Take a number,shapeName as input from user and on a click of generate btn generate those
+                    number of shapes but their color has to be choosen randomly</h2>
             </div>
-            <div class="col-4">
+            <div class="col-5">
                 <select id="shapeName" class="form-control">
                     <option value="circle">Circle</option>
                     <option value="square">Square</option>
                     <option value="rectangle">Rectangle</option>
                 </select>
             </div>
-            <div class="col-4">
+            <div class="col-5">
                 <input type="text" id="noOfShape" class="form-control" placeholder="Please enter count">
-            </div>
-            <div class="col-2 d-flex justify-content-center">
-                <input type="color" id="shapeColor" class="form-control form-control-color"
-                    placeholder="Please enter color">
             </div>
             <div class="col-2 text-end">
                 <button type="button" class="btn btn-primary" id="btnGenerate">Generate Shape</button>
@@ -73,16 +69,16 @@
         </div>
     </div>
     <script>
-
+        var colors = ["red", "blue", "green", "yellow", "pink", "black", "purple"];
         document.querySelector("#btnGenerate").addEventListener("click", () => {
             var shapeName = document.querySelector("#shapeName").value;
             var count = document.querySelector("#noOfShape").value;
-            var shapeColor = document.querySelector("#shapeColor").value;
+            let randomColor = colors[Math.floor(Math.random() * colors.length)]
             document.querySelector("#outputWindow").innerHTML = "";
             for (let index = 0; index < count; index++) {
                 var shape = document.createElement("div");
                 shape.classList.add(shapeName);
-                shape.style.backgroundColor = shapeColor
+                shape.style.backgroundColor = randomColor
                 document.querySelector("#outputWindow").appendChild(shape);
             }
         })
